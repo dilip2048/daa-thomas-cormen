@@ -27,6 +27,7 @@ func maxHeapify(a []int, i int) {
 	}
 }
 
+// prints heap
 func printHeap(a []int) {
 	for i := 0; i < len(a); i++ {
 		fmt.Printf("%d ", a[i])
