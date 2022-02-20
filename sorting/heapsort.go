@@ -14,9 +14,7 @@ func heapsort(a []int) {
 	buildMaxHeap(a)
 	for i := len(a) - 1; i >= 1; i-- {
 		// swapping root with the end element
-		temp := a[0]
-		a[0] = a[i]
-		a[i] = temp
+		a[0], a[i] = a[i], a[0]
 		// run heapify on the root node every time
 		maxHeapify(a[:i-1], 0)
 	}
