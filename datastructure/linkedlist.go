@@ -33,7 +33,7 @@ func insertNode(l *Node, data interface{}) *Node {
 }
 
 // This method will print the linked list
-func (list *Node) printList() {
+func printList(list *Node) {
 	temp := list
 	for temp != nil {
 		fmt.Printf("%v ", temp.data)
@@ -42,12 +42,12 @@ func (list *Node) printList() {
 }
 
 // This method will print the head of the linked list
-func (list *Node) printHead() {
+func printHead(list *Node) {
 	fmt.Printf("%v", list.data)
 }
 
 // This method will search and remove the data
-func (list *Node) remove(x int) {
+func remove(list *Node, x int) {
 	temp := list
 	for temp.next.data != x {
 		temp = temp.next
@@ -67,11 +67,11 @@ func main() {
 	l = insertNode(l, 2)
 	l = insertNode(l, 3)
 	l = insertNode(l, 4)
-	l.printHead()
+	printHead(l)
 	fmt.Println()
-	l.printList()
+	printList(l)
 
-	l.remove(3)
+	remove(l, 3)
 	fmt.Println()
-	l.printList()
+	printList(l)
 }
