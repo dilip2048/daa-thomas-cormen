@@ -1,4 +1,6 @@
 /*
+Reference: algorithm from page 188 of Thomas Coreman
+
 Invariant: Pivot is at the correct position
 
 Best Case: After first pass, if the pivot element is at the middle position in the array. T(n) = O(nlogn)
@@ -6,12 +8,9 @@ Best Case: After first pass, if the pivot element is at the middle position in t
 Worst Case: When the array is either already sorted either in ascending order or descending order.
 It will take T(n)=T(n-1)+ n = O(n^2)
 
-Reference: algorithm from page 188 of Thomas Coreman
 */
 
 package main
-
-import "fmt"
 
 // this method will sort the array and place pivot at than correct position.
 // we will then run another quicksort on the partitioned array.
@@ -45,8 +44,8 @@ func tailPartition(arr []int, left int, right int) int {
 	return p + 1
 }
 
-func main() {
-	array := []int{3, 5, 6, 2, 1, 9, 8}
-	tailRecursivequicksort(array, 0, 6)
-	fmt.Printf("%v", array)
-}
+//func main() {
+//	array := []int{3, 5, 6, 2, 1, 9, 8}
+//	tailRecursivequicksort(array, 0, 6)
+//	fmt.Printf("%v", array)
+//}

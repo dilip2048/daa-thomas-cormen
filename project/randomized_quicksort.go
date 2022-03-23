@@ -12,7 +12,6 @@ Reference: Thomas Coreman book. Page:179
 package main
 
 import (
-	"fmt"
 	"math/rand"
 )
 
@@ -52,10 +51,4 @@ func partition(arr []int, left int, right int) int {
 	arr[right] = arr[p+1]
 	arr[p+1] = temp
 	return p + 1
-}
-
-func main() {
-	array := []int{3, 5, 6, 2, 1, 9, 8}
-	quicksort(array, 0, 6)
-	fmt.Printf("%v", array)
 }
