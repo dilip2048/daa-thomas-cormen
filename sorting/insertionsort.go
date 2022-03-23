@@ -4,7 +4,7 @@ Tuesday, 01/18
 Invariant: All left elements are sorted in each iteration in insertion heapsort.
 Example: Sorting playing card
 
-*/
+x*/
 
 package main
 
