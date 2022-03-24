@@ -43,9 +43,3 @@ func tailPartition(arr []int, left int, right int) int {
 	arr[p+1] = temp
 	return p + 1
 }
-
-//func main() {
-//	array := []int{3, 5, 6, 2, 1, 9, 8}
-//	tailRecursivequicksort(array, 0, 6)
-//	fmt.Printf("%v", array)
-//}
