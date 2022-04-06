@@ -20,6 +20,20 @@ func BottomDownfibonacci(n int, memo []int) int {
 	return memo[n]
 }
 
+func OptimizedBottomUp(n int) int {
+	a := 0
+	b := 1
+	if n <= 1 {
+		return n
+	}
+	for i := 2; i < n; i++ {
+		c := a + b
+		a = b
+		b = c
+	}
+	return b // b will be the nth Fibonacii number, c is the n + 1th fibo number
+}
+
 func main() {
 	x := 8 // 8th fibonacci number is 21
 
@@ -27,4 +41,7 @@ func main() {
 	memo := make([]int, x+1)
 	fibo := BottomDownfibonacci(x, memo)
 	fmt.Printf("The nth fibonacci number is %d\n", fibo)
+
+	n := OptimizedBottomUp(x)
+	fmt.Printf("(Optimized)The nth fibonacci number is %d\n", n)
 }
