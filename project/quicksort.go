@@ -37,8 +37,8 @@ func partition1(a []int, left int, right int) int {
 func quicksort1(arr []int, left int, right int) {
 	if left < right {
 		pivot := randomizedPartition(arr, left, right)
-		quicksort(arr, left, pivot)
-		quicksort(arr, pivot+1, right)
+		quicksort1(arr, left, pivot)
+		quicksort1(arr, pivot+1, right)
 	}
 }
 

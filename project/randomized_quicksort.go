@@ -24,12 +24,12 @@ func randomizedPartition(a []int, left, right int) int {
 }
 
 // this method will sort the array and place pivot at than correct position.
-// we will then run another quicksort on the partitioned array.
-func quicksort(arr []int, left int, right int) {
+// we will then run another randomizedquicksort on the partitioned array.
+func randomizedquicksort(arr []int, left int, right int) {
 	if left < right {
 		pivot := randomizedPartition(arr, left, right)
-		quicksort(arr, left, pivot-1)
-		quicksort(arr, pivot+1, right)
+		randomizedquicksort(arr, left, pivot-1)
+		randomizedquicksort(arr, pivot+1, right)
 	}
 }
 
