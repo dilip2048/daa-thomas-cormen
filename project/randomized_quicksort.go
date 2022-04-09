@@ -16,6 +16,7 @@ import (
 )
 
 func randomizedPartition(a []int, left, right int) int {
+	// take random element as pivot
 	rand := rand.Intn(right-left) + left
 	temp := a[right]
 	a[right] = a[rand]
