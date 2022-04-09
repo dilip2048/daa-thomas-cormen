@@ -15,7 +15,7 @@ import (
 	"math/rand"
 )
 
-func randomizedPartition(a []int, left, right int) int {
+func randomizedPartition(a []interface{}, left, right int) int {
 	// take random element as pivot
 	rand := rand.Intn(right-left) + left
 	temp := a[right]
@@ -26,7 +26,7 @@ func randomizedPartition(a []int, left, right int) int {
 
 // this method will sort the array and place pivot at than correct position.
 // we will then run another randomizedquicksort on the partitioned array.
-func randomizedquicksort(arr []int, left int, right int) {
+func randomizedquicksort(arr []interface{}, left int, right int) {
 	if left < right {
 		pivot := randomizedPartition(arr, left, right)
 		randomizedquicksort(arr, left, pivot-1)
@@ -34,22 +34,44 @@ func randomizedquicksort(arr []int, left int, right int) {
 	}
 }
 
-func partition(arr []int, left int, right int) int {
-	pivot := arr[right]
-	p := left - 1
-	for i := left; i < right; i++ {
-		// if element is found lower than pivot swap it with pth element
-		if arr[i] <= pivot {
-			//swap
-			p++
-			temp := arr[p]
-			arr[p] = arr[i]
-			arr[i] = temp
+func partition(a []interface{}, left int, right int) int {
+	pivot := a[left]
+	i := left
+	j := right
+	for i < j {
+		switch piv := pivot.(type) {
+		case float64:
+			// while you don't find bigger element than pivot, increase left index
+			for a[i].(float64) <= piv {
+				i++
+			}
+			// while you don't find bigger element than pivot, decrease right index
+			for a[j].(float64) > piv {
+				j--
+			}
+			if i < j {
+				temp := a[i]
+				a[i] = a[j]
+				a[j] = temp
+			}
+		case int:
+			for i < len(a) && a[i].(int) <= piv {
+				i++
+			}
+			for a[j].(int) > piv {
+				j--
+			}
+			if i < j {
+				temp := a[i]
+				a[i] = a[j]
+				a[j] = temp
+			}
 		}
+
 	}
-	//swap pivot with pth index
-	temp := arr[right]
-	arr[right] = arr[p+1]
-	arr[p+1] = temp
-	return p + 1
+	//swap pivot to the correct position, j
+	temp := a[left]
+	a[left] = a[j]
+	a[j] = temp
+	return j
 }
