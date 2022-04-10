@@ -32,14 +32,10 @@ func tailPartition(arr []int, left int, right int) int {
 		if arr[i] <= pivot {
 			//swap
 			p++
-			temp := arr[p]
-			arr[p] = arr[i]
-			arr[i] = temp
+			arr[p], arr[i] = arr[i], arr[p]
 		}
 	}
 	//swap pivot with pth index
-	temp := arr[right]
-	arr[right] = arr[p+1]
-	arr[p+1] = temp
+	arr[right], arr[p+1] = arr[p+1], arr[right]
 	return p + 1
 }
