@@ -26,6 +26,7 @@ func randomizedPartition(a []interface{}, left, right int) int {
 
 // this method will sort the array and place pivot at than correct position.
 // we will then run another randomizedquicksort on the partitioned array.
+// It take both float and int arrays as input
 func randomizedquicksort(arr []interface{}, left int, right int) {
 	if left < right {
 		pivot := randomizedPartition(arr, left, right)
