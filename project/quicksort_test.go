@@ -6,17 +6,17 @@ import (
 	"time"
 )
 
-//func TestQuickSort(t *testing.T) {
-//	array := []interface{}{3, 2, 1, 4, 0, 6, 5, 8, 9, 7}
-//	temp := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-//	quicksort1(array, 0, 9)
-//	for i := 0; i < len(array); i++ {
-//		if array[i] != temp[i] {
-//			t.Fail()
-//			break
-//		}
-//	}
-//}
+func TestQuickSort(t *testing.T) {
+	array := []interface{}{3, 2, 1, 4, 0, 6, 5, 8, 9, 7}
+	temp := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+	quicksort1(array, 0, 9)
+	for i := 0; i < len(array); i++ {
+		if array[i] != temp[i] {
+			t.Fail()
+			break
+		}
+	}
+}
 
 // 250 numbers
 func TestQuickSort1(t *testing.T) {

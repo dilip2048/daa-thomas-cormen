@@ -15,27 +15,37 @@ package main
 // this method will sort the array and place pivot at than correct position.
 // we will then run another quicksort on the partitioned array.
 // Last thing we do is recursion in tail recursion
-func tailRecursivequicksort(arr []int, left int, right int) {
+func tailRecursivequicksort(a []interface{}, left int, right int) {
 	for left < right {
-		pi := tailPartition(arr, left, right)
-		tailRecursivequicksort(arr, left, right-1)
+		pi := tailPartition(a, left, right)
+		tailRecursivequicksort(a, left, right-1)
 		left = pi + 1
 	}
 }
 
 // this method will partition the array around pivot and return pivot's index
-func tailPartition(arr []int, left int, right int) int {
-	pivot := arr[right]
+func tailPartition(a []interface{}, left int, right int) int {
+	pivot := a[right]
 	p := left - 1
 	for i := left; i < right; i++ {
-		// if element is found lower than pivot swap it with pth element
-		if arr[i] <= pivot {
-			//swap
-			p++
-			arr[p], arr[i] = arr[i], arr[p]
+		switch piv := pivot.(type) {
+		case float64:
+			// if element is found lower than pivot swap it with pth element
+			if a[i].(float64) <= piv {
+				//swap
+				p++
+				a[p], a[i] = a[i], a[p]
+			}
+		case int:
+			// if element is found lower than pivot swap it with pth element
+			if a[i].(int) <= piv {
+				//swap
+				p++
+				a[p], a[i] = a[i], a[p]
+			}
 		}
 	}
 	//swap pivot with pth index
-	arr[right], arr[p+1] = arr[p+1], arr[right]
+	a[right], a[p+1] = a[p+1], a[right]
 	return p + 1
 }

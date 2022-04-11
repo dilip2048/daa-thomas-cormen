@@ -6,45 +6,27 @@ package main
 // 		left := the beginning of the list
 // 		right := the end of the list
 func partition1(a []interface{}, left int, right int) int {
-	pivot := a[left]
-	i := left
-	j := right
-	for i < j {
+	pivot := a[right]
+	i := left - 1
+	for j := left; j <= right-1; j++ {
 		switch piv := pivot.(type) {
 		case float64:
-			// while you don't find bigger element than pivot, increase left index
-			for a[i].(float64) <= piv {
+			if a[j].(float64) < piv {
 				i++
-			}
-			// while you don't find bigger element than pivot, decrease right index
-			for a[j].(float64) > piv {
-				j--
-			}
-			if i < j {
-				temp := a[i]
-				a[i] = a[j]
-				a[j] = temp
+				//swap
+				a[i], a[j] = a[j], a[i]
 			}
 		case int:
-			for i < len(a) && a[i].(int) <= piv {
+			if a[j].(int) < piv {
 				i++
-			}
-			for a[j].(int) > piv {
-				j--
-			}
-			if i < j {
-				temp := a[i]
-				a[i] = a[j]
-				a[j] = temp
+				//swap
+				a[i], a[j] = a[j], a[i]
 			}
 		}
-
 	}
-	//swap pivot to the correct position, j
-	temp := a[left]
-	a[left] = a[j]
-	a[j] = temp
-	return j
+	//swap pivot with pth index
+	a[right], a[i+1] = a[i+1], a[right]
+	return i + 1
 }
 
 // this method will sort the array. this is generic method that will take array of data type integers, and floats
@@ -52,7 +34,7 @@ func partition1(a []interface{}, left int, right int) int {
 func quicksort1(arr []interface{}, left int, right int) {
 	if left < right {
 		pivot := partition1(arr, left, right)
-		quicksort1(arr, left, pivot)
+		quicksort1(arr, left, pivot-1)
 		quicksort1(arr, pivot+1, right)
 	}
 }
